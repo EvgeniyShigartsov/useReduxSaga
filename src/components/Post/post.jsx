@@ -1,12 +1,11 @@
 import React from 'react'
 
-export const Post = ({title, id}) => (
-  <li key={id}>
-    <span style={{marginRight: 10}} key={id}>
-      {id}
+export const Post = ({name, index}) => (
+  <li>
+    <span style={{marginRight: 10}}>
+      {index}
       :
     </span>
-    <span>{title}</span>
+    <span>{name}</span>
   </li>
 )
-// sds
