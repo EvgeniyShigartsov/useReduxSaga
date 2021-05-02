@@ -7,10 +7,14 @@ import {
 const DOMAIN = 'https://swapi.dev/api'
 
 function* sagaPostWorker() {
-  yield put({type: START_LOADING})
-  const { data: { results } } = yield call(() => axios.get(`${DOMAIN}/people`))
-  yield put({type: GET_POSTS_SUCCESS, payload: results})
-  yield put({type: STOP_LOADING})
+  try {
+    yield put({type: START_LOADING})
+    const { data: { results } } = yield call(() => axios.get(`${DOMAIN}/people`))
+    yield put({type: GET_POSTS_SUCCESS, payload: results})
+    yield put({type: STOP_LOADING})
+  } catch (error) {
+    console.log(error.response || error)
+  }
 }
 
 export function* sagaWatcher() {
