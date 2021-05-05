@@ -1,6 +1,9 @@
-import { fork } from 'redux-saga/effects'
+import { all, fork } from 'redux-saga/effects'
 import { sagaWatcher } from './posts/actions'
 
 export function* rootSaga() {
-  yield fork(sagaWatcher)
+  const test2 = yield all([
+    fork(sagaWatcher)
+  ])
+  console.log(test2)
 }
